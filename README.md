@@ -15,9 +15,6 @@ This project allows users to:
 Check out the live version here:  
 🌐 [Expense Tracker Live](https://devilmonster5551w.github.io/Expense-Tracker/)
 
-## 📸 Screenshots
-
-![App Screenshot](screenshots/demo.png) *(Add your own screenshot in a `/screenshots` folder)*
 
 ## 🛠️ Technologies Used
 
