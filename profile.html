@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="nav.js"></script>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <div class="container profile">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://ui-avatars.com/api/?name=Nidan+Sharma&background=4CAF50&color=fff" alt="Profile Avatar">
+                <button class="avatar-edit-btn"><i class="fas fa-camera"></i></button>
+            </div>
+            <h1><i class="fas fa-user-circle"></i> User Profile</h1>
+        </div>
+
+        <div class="profile-info">
+            <div class="info-card">
+                <p><i class="fas fa-user"></i> Name: Nidan Sharma</p>
+                <button class="edit-field-btn"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="info-card">
+                <p><i class="fas fa-envelope"></i> Email: devilonster289@gmail.com</p>
+                <button class="edit-field-btn"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="info-card">
+                <p style="color: brown;"><i class="fas fa-exchange-alt"></i> Total Transactions: <span class="transaction-count">0</span></p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="info-card">
+                <p><i class="fas fa-calendar-alt"></i> Join Date: January 1, 2024</p>
+                <p class="member-since">Member for <span class="days-count">0</span> days</p>
+            </div>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Monthly Average</h3>
+                <p class="stat-value">$0.00</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-piggy-bank"></i>
+                <h3>Savings Rate</h3>
+                <p class="stat-value">0%</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tags"></i>
+                <h3>Categories</h3>
+                <p class="stat-value">0</p>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn primary-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+            <button class="btn secondary-btn"><i class="fas fa-cog"></i> Settings</button>
+            <button class="btn danger-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Expense Tracker &copy; 2024 | Made with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Calculate days since joining
+        const joinDate = new Date('2024-01-01');
+        const today = new Date();
+        const daysSinceJoin = Math.floor((today - joinDate) / (1000 * 60 * 60 * 24));
+        document.querySelector('.days-count').textContent = daysSinceJoin;
+
+        // Add hover effects to cards
+        document.querySelectorAll('.info-card, .stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Progress bar animation
+        const progressBar = document.querySelector('.progress');
+        let width = 0;
+        const interval = setInterval(() => {
+            if (width >= 50) {
+                clearInterval(interval);
+            } else {
+                width++;
+                progressBar.style.width = width + '%';
+            }
+        }, 30);
+    </script>
+</body>
+</html>

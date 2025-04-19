@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Visualize</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="visualize.js"></script>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <div class="container">
+        <div class="visualization-header">
+            <h1><i class="fas fa-chart-pie"></i> Expense Visualization</h1>
+            <div class="time-filter">
+                <button class="time-btn active" data-period="week">Week</button>
+                <button class="time-btn" data-period="month">Month</button>
+                <button class="time-btn" data-period="year">Year</button>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-pie-chart"></i> Expense Distribution</h3>
+                    <div class="chart-controls">
+                        <button class="chart-type-btn" data-type="pie"><i class="fas fa-chart-pie"></i></button>
+                        <button class="chart-type-btn" data-type="doughnut"><i class="fas fa-circle"></i></button>
+                    </div>
+                </div>
+                <canvas id="expenseChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-chart-line"></i> Spending Trends</h3>
+                    <div class="chart-controls">
+                        <button class="chart-type-btn" data-type="line"><i class="fas fa-chart-line"></i></button>
+                        <button class="chart-type-btn" data-type="bar"><i class="fas fa-chart-bar"></i></button>
+                    </div>
+                </div>
+                <canvas id="trendChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-balance-scale"></i> Income vs Expenses</h3>
+                    <div class="chart-controls">
+                        <button class="chart-type-btn" data-type="bar"><i class="fas fa-chart-bar"></i></button>
+                        <button class="chart-type-btn" data-type="line"><i class="fas fa-chart-line"></i></button>
+                    </div>
+                </div>
+                <canvas id="comparisonChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-tags"></i> Category Breakdown</h3>
+                    <div class="chart-controls">
+                        <button class="chart-type-btn" data-type="radar"><i class="fas fa-bullseye"></i></button>
+                        <button class="chart-type-btn" data-type="polar"><i class="fas fa-circle-notch"></i></button>
+                    </div>
+                </div>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="insights-section">
+            <h3><i class="fas fa-lightbulb"></i> Spending Insights</h3>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <i class="fas fa-arrow-up"></i>
+                    <h4>Highest Spending</h4>
+                    <p class="insight-value">$0.00</p>
+                    <p class="insight-category">Category</p>
+                </div>
+                <div class="insight-card">
+                    <i class="fas fa-arrow-down"></i>
+                    <h4>Lowest Spending</h4>
+                    <p class="insight-value">$0.00</p>
+                    <p class="insight-category">Category</p>
+                </div>
+                <div class="insight-card">
+                    <i class="fas fa-percentage"></i>
+                    <h4>Savings Rate</h4>
+                    <p class="insight-value">0%</p>
+                    <p class="insight-category">This Month</p>
+                </div>
+                <div class="insight-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Trend</h4>
+                    <p class="insight-value">+0%</p>
+                    <p class="insight-category">vs Last Month</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <button class="btn export-btn"><i class="fas fa-download"></i> Export Data</button>
+            <button class="btn share-btn"><i class="fas fa-share-alt"></i> Share Insights</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Expense Tracker &copy; 2024 | Made with <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script>
+        // Time filter functionality
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Add your time filter logic here
+            });
+        });
+
+        // Chart type toggle functionality
+        document.querySelectorAll('.chart-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chartCard = btn.closest('.chart-card');
+                chartCard.querySelectorAll('.chart-type-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Add your chart type toggle logic here
+            });
+        });
+
+        // Export functionality
+        document.querySelector('.export-btn').addEventListener('click', () => {
+            // Add your export logic here
+        });
+
+        // Share functionality
+        document.querySelector('.share-btn').addEventListener('click', () => {
+            // Add your share logic here
+        });
+    </script>
+</body>
+</html>
